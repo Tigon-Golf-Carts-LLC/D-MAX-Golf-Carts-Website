@@ -1,0 +1,9 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "D-MAX Golf Carts",
+  "name_for_model": "dmax_golf_carts",
+  "description_for_human": "Public D-MAX Golf Carts model and capability information.",
+  "description_for_model": "Use the public D-MAX site to answer questions about GT4, GT6, XT4, XT6, published prices, seating, drivetrain, range, and contact information. Do not infer inventory, locations, or availability.",
+  "api": { "type": "openapi", "url": "https://dmaxgolfcarts.com/api/site-info.json" },
+  "legal_info_url": "https://dmaxgolfcarts.com/"
+}
