@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json.schemastore.org/wrangler.json",
+
+  // This config lives at the repository root on purpose.
+  //
+  // Cloudflare Workers Builds must use the repository root as its root
+  // directory, otherwise pnpm cannot resolve this workspace and `pnpm install`
+  // fails. But Wrangler resolves its config relative to the directory it is
+  // invoked from, and running `wrangler deploy` in the root of a workspace
+  // without a config here fails with:
+  //
+  //   The Cloudflare application detection logic has been run in the root of a
+  //   workspace instead of targeting a specific project.
+  //
+  // Keeping the config here means the default deploy command (`npx wrangler
+  // deploy`) works unmodified. Paths below are relative to this file.
+
+  // Worker name. This is also the *.workers.dev subdomain prefix, and the
+  // Worker that dmaxgolfcarts.com should be attached to.
+  "name": "dmax-golf-carts",
+  "compatibility_date": "2026-08-24",
+
+  // The site is 100% static (React/Vite output, plus the SEO/feed files in
+  // artifacts/dmax-golf-carts/public), so there is deliberately no `main`
+  // Worker script. Cloudflare serves everything straight from the asset layer,
+  // which is faster and does not bill a Worker invocation per request.
+  //
+  // If server-side logic is ever needed, add a `"main"` entry pointing at a
+  // Worker script plus `"binding": "ASSETS"` under `assets`, and serve files
+  // via `env.ASSETS.fetch(request)`.
+  "assets": {
+    "directory": "./artifacts/dmax-golf-carts/dist/public",
+
+    // Client-side routing: unknown paths (e.g. /models/xt4, /policies/terms)
+    // return index.html so wouter can render the right page. The app's own
+    // NotFound route handles genuinely bad URLs.
+    "not_found_handling": "single-page-application",
+
+    // Serve /models/xt4 and /models/xt4/ identically, without a redirect hop.
+    "html_handling": "auto-trailing-slash"
+  }
+}

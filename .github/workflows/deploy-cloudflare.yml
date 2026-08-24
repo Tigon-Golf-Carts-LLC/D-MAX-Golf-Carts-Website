@@ -40,6 +40,6 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          workingDirectory: artifacts/dmax-golf-carts
-          # The build already ran above; just upload dist/public.
+          # wrangler.jsonc lives at the repository root, so Wrangler runs here.
+          # The build already ran above; this just uploads dist/public.
           command: deploy

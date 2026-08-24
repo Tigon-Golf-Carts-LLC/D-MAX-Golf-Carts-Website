@@ -9,10 +9,10 @@
     "build:static": "BASE_PATH=${BASE_PATH:-/} NODE_ENV=production vite build --config vite.config.ts",
     "build:github": "pnpm run build:static && node scripts/create-github-pages-fallback.mjs",
     "build:cloudflare": "BASE_PATH=/ pnpm run build:static",
-    "preview:cloudflare": "pnpm run build:cloudflare && wrangler dev",
-    "deploy": "pnpm run build:cloudflare && wrangler deploy",
+    "preview:cloudflare": "pnpm run build:cloudflare && wrangler dev --config ../../wrangler.jsonc",
+    "deploy": "pnpm run build:cloudflare && wrangler deploy --config ../../wrangler.jsonc",
     "deploy:cloudflare": "pnpm run deploy",
-    "cf-typegen": "wrangler types",
+    "cf-typegen": "wrangler types --config ../../wrangler.jsonc",
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },

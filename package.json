@@ -9,8 +9,8 @@
     "typecheck:libs": "tsc --build",
     "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck",
     "build:site": "pnpm --filter @workspace/dmax-golf-carts run build:cloudflare",
-    "preview:site": "pnpm --filter @workspace/dmax-golf-carts run preview:cloudflare",
-    "deploy:site": "pnpm --filter @workspace/dmax-golf-carts run deploy"
+    "preview:site": "pnpm run build:site && wrangler dev",
+    "deploy:site": "pnpm run build:site && wrangler deploy"
   },
   "private": true,
   "dependencies": {
@@ -18,6 +18,7 @@
   },
   "devDependencies": {
     "prettier": "^3.9.6",
-    "typescript": "~5.9.3"
+    "typescript": "~5.9.3",
+    "wrangler": "^4.125.0"
   }
 }

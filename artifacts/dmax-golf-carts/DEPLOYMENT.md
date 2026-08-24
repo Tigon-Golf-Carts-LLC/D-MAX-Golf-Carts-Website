@@ -11,16 +11,24 @@ Pages build.
 
 ## Cloudflare Workers (recommended)
 
-`wrangler.jsonc` configures a **static-assets Worker**: Cloudflare's asset layer
-serves every request directly, with no Worker script in front of it. Unknown
-paths such as `/models/xt4` return `index.html` so the client router can render
-them, and `public/_headers` supplies caching and security headers.
+`wrangler.jsonc` **at the repository root** configures a **static-assets
+Worker**: Cloudflare's asset layer serves every request directly, with no Worker
+script in front of it. Unknown paths such as `/models/xt4` return `index.html`
+so the client router can render them, and `public/_headers` supplies caching and
+security headers.
+
+The config lives at the root rather than beside the site because Workers Builds
+must use the repository root as its root directory — otherwise pnpm cannot
+resolve this workspace and `pnpm install` fails. Wrangler resolves its config
+relative to the directory it runs in, and `wrangler deploy` in a workspace root
+with no config there fails with *"The Cloudflare application detection logic has
+been run in the root of a workspace instead of targeting a specific project."*
 
 ### One-time setup
 
 ```sh
 pnpm install
-pnpm --filter @workspace/dmax-golf-carts exec wrangler login
+pnpm exec wrangler login
 ```
 
 ### Deploy
@@ -61,7 +69,7 @@ Build): connect this repository and use
 | --- | --- |
 | Root directory | `/` (repository root — this is a pnpm workspace) |
 | Build command | `pnpm run build:site` |
-| Deploy command | `pnpm --filter @workspace/dmax-golf-carts exec wrangler deploy` |
+| Deploy command | `npx wrangler deploy` (the default) |
 
 The root directory must stay at the repository root so pnpm can resolve the
 workspace. `.nvmrc` pins Node 22 and `packageManager` in the root
