@@ -1,0 +1,8 @@
+/* TEAM */
+Site: D-MAX Golf Carts
+Contact: hello@dmaxgolfcarts.com
+
+/* SITE */
+URL: https://dmaxgolfcarts.com/
+Technology: React, Vite, TypeScript
+Last updated: 2026-08-24
