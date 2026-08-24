@@ -1,0 +1,6 @@
+# D-MAX Golf Carts bot guidance
+User-agent: *
+Access: public pages only
+Sitemap: https://dmaxgolfcarts.com/sitemap.xml
+Contact: hello@dmaxgolfcarts.com
+Note: Respect applicable law, provider policies, rate limits, and private data boundaries.
