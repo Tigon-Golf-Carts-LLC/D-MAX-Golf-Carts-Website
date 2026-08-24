@@ -67,6 +67,11 @@ The root directory must stay at the repository root so pnpm can resolve the
 workspace. `.nvmrc` pins Node 22 and `packageManager` in the root
 `package.json` pins pnpm, so the build image matches local builds.
 
+Cloudflare's default build command, `pnpm run build`, also works and produces a
+byte-identical site bundle — it just additionally typechecks and builds
+`api-server` and `mockup-sandbox`, which the website does not use. `build:site`
+is the faster choice and pins `BASE_PATH=/`.
+
 **GitHub Actions** is wired up as an alternative in
 `.github/workflows/deploy-cloudflare.yml`. It typechecks, builds and deploys on
 every push to `main`. Add two repository secrets under **Settings → Secrets and
