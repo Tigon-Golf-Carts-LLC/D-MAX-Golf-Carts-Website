@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog xmlns="https://dmaxgolfcarts.com/data">
+  <brand>D-MAX Golf Carts</brand><currency>USD</currency>
+  <model id="GT4"><seats>4</seats><drive>Rear-wheel drive</drive><range>45 mi</range><speed>25 mph</speed><msrp>13595</msrp></model>
+  <model id="GT6"><seats>6</seats><drive>Rear-wheel drive</drive><range>45 mi</range><speed>25 mph</speed><msrp>15595</msrp></model>
+  <model id="XT4"><seats>4</seats><drive>4x4 all-wheel drive</drive><range>48 mi</range><speed>25 mph</speed><msrp>15595</msrp></model>
+  <model id="XT6"><seats>6</seats><drive>4x4 all-wheel drive</drive><range>48 mi</range><speed>25 mph</speed><msrp>17595</msrp></model>
+</catalog>
