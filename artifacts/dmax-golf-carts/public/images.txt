@@ -1,0 +1,7 @@
+# Image optimization inventory
+
+All public model images should use descriptive alt text, responsive sizing, modern formats where available, and lazy loading below the fold. Canonical model images:
+- /models/gt4.jpg — D-MAX GT4 golf cart
+- /models/gt6.jpg — D-MAX GT6 golf cart
+- /models/xt4.jpg — D-MAX XT4 4x4 golf cart
+- /models/xt6.jpg — D-MAX XT6 4x4 golf cart
