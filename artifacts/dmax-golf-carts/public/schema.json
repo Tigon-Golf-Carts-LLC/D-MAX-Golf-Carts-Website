@@ -1,0 +1,23 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://dmaxgolfcarts.com/#organization",
+      "name": "D-MAX Golf Carts",
+      "url": "https://dmaxgolfcarts.com/",
+      "telephone": "+1-844-844-1920",
+      "email": "hello@dmaxgolfcarts.com"
+    },
+    {
+      "@type": "ItemList",
+      "name": "D-MAX Golf Cart Models",
+      "itemListElement": [
+        { "@type": "Product", "name": "D-MAX GT4", "url": "https://dmaxgolfcarts.com/models/gt4", "offers": { "@type": "Offer", "price": "13595", "priceCurrency": "USD" } },
+        { "@type": "Product", "name": "D-MAX GT6", "url": "https://dmaxgolfcarts.com/models/gt6", "offers": { "@type": "Offer", "price": "15595", "priceCurrency": "USD" } },
+        { "@type": "Product", "name": "D-MAX XT4", "url": "https://dmaxgolfcarts.com/models/xt4", "offers": { "@type": "Offer", "price": "15595", "priceCurrency": "USD" } },
+        { "@type": "Product", "name": "D-MAX XT6", "url": "https://dmaxgolfcarts.com/models/xt6", "offers": { "@type": "Offer", "price": "17595", "priceCurrency": "USD" } }
+      ]
+    }
+  ]
+}
