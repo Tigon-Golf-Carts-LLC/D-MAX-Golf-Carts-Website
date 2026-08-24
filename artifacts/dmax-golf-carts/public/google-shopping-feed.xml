@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:g="http://base.google.com/ns/1.0">
+  <title>D-MAX Golf Carts product feed</title><link href="https://dmaxgolfcarts.com/"/>
+  <entry><g:id>GT4</g:id><g:title>D-MAX GT4</g:title><g:link>https://dmaxgolfcarts.com/models/gt4</g:link><g:price>13595 USD</g:price></entry>
+  <entry><g:id>GT6</g:id><g:title>D-MAX GT6</g:title><g:link>https://dmaxgolfcarts.com/models/gt6</g:link><g:price>15595 USD</g:price></entry>
+  <entry><g:id>XT4</g:id><g:title>D-MAX XT4</g:title><g:link>https://dmaxgolfcarts.com/models/xt4</g:link><g:price>15595 USD</g:price></entry>
+  <entry><g:id>XT6</g:id><g:title>D-MAX XT6</g:title><g:link>https://dmaxgolfcarts.com/models/xt6</g:link><g:price>17595 USD</g:price></entry>
+</feed>
