@@ -1,9 +1,13 @@
 # Deploying D-MAX Golf Carts
 
-The site is a frontend-only React/Vite app. `pnpm run build:static` emits
+The site is a frontend-only React/Vite app. `pnpm run build:cloudflare` emits
 everything Cloudflare needs — HTML, JS, CSS, images, brochures, feeds and SEO
 files — into `dist/public`. There is no database, API server, authentication
 service, or runtime environment variable.
+
+Cloudflare always serves from the domain root, so `build:cloudflare` pins
+`BASE_PATH=/` rather than inheriting whatever the shell has set for a GitHub
+Pages build.
 
 ## Cloudflare Workers (recommended)
 
@@ -88,13 +92,27 @@ For a plain Vite preview without the Cloudflare layer, use `pnpm run serve`.
 ## GitHub Pages (optional alternative)
 
 `pnpm run build:github` produces the same static output plus a `404.html` SPA
-fallback, which is how GitHub Pages handles client-side routes. No workflow is
-committed for this path — deploying to Pages means publishing `dist/public`
-yourself or adding a workflow.
+fallback, which is how GitHub Pages serves client-side routes.
 
-`BASE_PATH=/` is correct for a custom domain or a user/organization Pages site.
-For a project URL such as `username.github.io/repository-name`, set
-`BASE_PATH=/<repository-name>/` at build time.
+`build:static` honours an inherited `BASE_PATH` and falls back to `/`, so the
+asset base can be set per deploy target:
+
+```sh
+# Custom domain, or a user/organization Pages site
+BASE_PATH=/ pnpm run build:github
+
+# Project URL such as username.github.io/D-MAX-Golf-Carts-Website
+BASE_PATH=/D-MAX-Golf-Carts-Website/ pnpm run build:github
+```
+
+No Pages workflow is committed. Publishing to Pages means uploading
+`dist/public` yourself or adding a workflow and setting **GitHub Actions** as
+the Pages source in the repository settings.
+
+Pages and Cloudflare can coexist, but only one host should be canonical: the
+`index.html` metadata, sitemaps and structured data all point at
+`https://dmaxgolfcarts.com/`, so a Pages copy served on a `github.io` URL will
+advertise the Cloudflare site as its canonical location.
 
 ## Headers worth reviewing before launch
 

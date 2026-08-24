@@ -8,7 +8,7 @@
     "build": "pnpm run typecheck && pnpm -r --if-present run build",
     "typecheck:libs": "tsc --build",
     "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck",
-    "build:site": "pnpm --filter @workspace/dmax-golf-carts run build:static",
+    "build:site": "pnpm --filter @workspace/dmax-golf-carts run build:cloudflare",
     "preview:site": "pnpm --filter @workspace/dmax-golf-carts run preview:cloudflare",
     "deploy:site": "pnpm --filter @workspace/dmax-golf-carts run deploy"
   },
