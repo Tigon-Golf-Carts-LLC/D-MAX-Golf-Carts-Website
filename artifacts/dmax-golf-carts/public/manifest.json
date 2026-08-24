@@ -1,0 +1,10 @@
+{
+  "name": "D-MAX Golf Carts",
+  "short_name": "D-MAX",
+  "description": "Premium electric golf carts engineered for the long way around.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#071321",
+  "theme_color": "#071321",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}
