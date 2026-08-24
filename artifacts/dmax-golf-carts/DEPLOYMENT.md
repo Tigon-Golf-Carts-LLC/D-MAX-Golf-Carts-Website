@@ -19,9 +19,9 @@ The Worker name is `dmax-golf-carts`. Attach `dmaxgolfcarts.com` to it from the 
 
 ## GitHub Pages
 
-The included `.github/workflows/deploy-pages.yml` builds and publishes `dist/public` on pushes to `main`. Enable **GitHub Actions** as the Pages source in the repository settings.
+The included `.github/workflows/deploy-dmax-golf-carts-pages.yml` builds and publishes `dist/public` on pushes to `main`. Set **GitHub Actions** as the Pages source in the repository settings.
 
-The workflow uses `/` as the asset base, which is correct for a custom domain or a user/organization Pages site. For a project Pages URL such as `username.github.io/repository-name`, set a custom domain or change `BASE_PATH` in the workflow to `/<repository-name>/` and make the repository the published site root.
+The workflow builds with the repository name as the asset base, which is correct for a project Pages URL such as `username.github.io/repository-name`. For a custom domain or a user/organization Pages site, update the workflow's `BASE_PATH` value to `/`.
 
 The build creates `404.html` as a GitHub Pages SPA fallback, so direct navigation to model pages continues to work.
 
