@@ -1,0 +1,8 @@
+{
+  "name": "D-MAX Golf Carts",
+  "description": "Public, read-only model information for D-MAX Golf Carts.",
+  "homepage": "https://dmaxgolfcarts.com/",
+  "contact": { "telephone": "+1-844-844-1920", "email": "hello@dmaxgolfcarts.com" },
+  "capabilities": ["read_public_model_information", "compare_models", "open_contact_link"],
+  "exclusions": ["live_inventory", "customer_data", "private_account_actions", "unverified_locations"]
+}
