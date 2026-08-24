@@ -1,0 +1,6 @@
+# Geographic metadata
+
+Market scope: nationwide United States product-information audience.
+No verified D-MAX store, service-area, business-address, ZIP-code, or coordinate information is currently published.
+Do not infer city, county, state, ZIP, landmark, or service-boundary data.
+Contact D-MAX at +1-844-844-1920 for current dealer, delivery, service, and availability information.
