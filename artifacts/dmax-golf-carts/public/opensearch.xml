@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>D-MAX Golf Carts</ShortName>
+  <Description>Search D-MAX Golf Carts models and capabilities</Description>
+  <Url type="text/html" method="get" template="https://dmaxgolfcarts.com/models"/>
+  <InputEncoding>UTF-8</InputEncoding>
+</OpenSearchDescription>
