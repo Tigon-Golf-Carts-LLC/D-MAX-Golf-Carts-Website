@@ -1,0 +1,3 @@
+# Performance guidelines
+
+Keep critical metadata in the HTML shell, use compressed responsive images, reserve image dimensions to limit layout shift, lazy-load below-fold galleries, and retain font-display: swap. Validate Core Web Vitals on mobile after publishing.
