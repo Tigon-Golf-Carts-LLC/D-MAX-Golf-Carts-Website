@@ -73,6 +73,9 @@ onlyBuiltDependencies:
   - esbuild
   - msw
   - unrs-resolver
+  # wrangler ships workerd for `wrangler dev`; its postinstall picks the
+  # platform binary. Without this, local Cloudflare preview cannot start.
+  - workerd
 
 overrides:
   # replit uses linux-x64 only, we can exclude all other platforms

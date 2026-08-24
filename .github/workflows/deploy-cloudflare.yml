@@ -1,0 +1,45 @@
+name: Deploy to Cloudflare
+
+on:
+  push:
+    branches: [main]
+  # Allows a manual redeploy from the Actions tab without pushing a commit.
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-cloudflare
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck the site
+        run: pnpm --filter @workspace/dmax-golf-carts run typecheck
+
+      - name: Build static site
+        run: pnpm run build:site
+
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: artifacts/dmax-golf-carts
+          # The build already ran above; just upload dist/public.
+          command: deploy

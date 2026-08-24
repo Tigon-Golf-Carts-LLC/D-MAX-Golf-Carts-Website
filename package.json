@@ -2,11 +2,15 @@
   "name": "workspace",
   "version": "0.0.0",
   "license": "MIT",
+  "packageManager": "pnpm@10.33.0",
   "scripts": {
     "preinstall": "sh -c 'rm -f package-lock.json yarn.lock; case \"$npm_config_user_agent\" in pnpm/*) ;; *) echo \"Use pnpm instead\" >&2; exit 1 ;; esac'",
     "build": "pnpm run typecheck && pnpm -r --if-present run build",
     "typecheck:libs": "tsc --build",
-    "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck"
+    "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck",
+    "build:site": "pnpm --filter @workspace/dmax-golf-carts run build:static",
+    "preview:site": "pnpm --filter @workspace/dmax-golf-carts run preview:cloudflare",
+    "deploy:site": "pnpm --filter @workspace/dmax-golf-carts run deploy"
   },
   "private": true,
   "dependencies": {

@@ -8,7 +8,10 @@
     "build": "vite build --config vite.config.ts",
     "build:static": "BASE_PATH=/ NODE_ENV=production vite build --config vite.config.ts",
     "build:github": "pnpm run build:static && node scripts/create-github-pages-fallback.mjs",
-    "deploy:cloudflare": "pnpm run build:static && npx wrangler deploy",
+    "preview:cloudflare": "pnpm run build:static && wrangler dev",
+    "deploy": "pnpm run build:static && wrangler deploy",
+    "deploy:cloudflare": "pnpm run deploy",
+    "cf-typegen": "wrangler types",
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
@@ -75,6 +78,7 @@
     "vaul": "^1.1.2",
     "vite": "catalog:",
     "wouter": "^3.3.5",
+    "wrangler": "^4.125.0",
     "zod": "catalog:"
   }
 }

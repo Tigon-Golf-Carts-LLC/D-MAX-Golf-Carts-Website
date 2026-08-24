@@ -1,0 +1,47 @@
+# Cloudflare Workers static-asset headers.
+# Syntax: a path pattern on its own line, followed by indented `Name: value`
+# lines. Docs: https://developers.cloudflare.com/workers/static-assets/headers/
+#
+# IMPORTANT: every rule below is scoped either to a file extension or to a
+# directory that is not an SPA route. Unknown paths fall back to index.html
+# (see wrangler.jsonc), so a broad rule like `/models/*` would attach a long
+# cache lifetime to the HTML shell served for the /models/xt4 route and pin
+# visitors to a stale asset manifest after a deploy.
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), interest-cohort=()
+
+# Vite fingerprints these filenames, so a changed file is always a new URL.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Model photography, colour swatches, galleries and brochures. Stable, but not
+# fingerprinted: cache for a day, then revalidate so a replaced file goes live
+# without visitors needing a hard refresh.
+/models/*.jpg
+  Cache-Control: public, max-age=86400, must-revalidate
+/gt4/*
+  Cache-Control: public, max-age=86400, must-revalidate
+/gt6/*
+  Cache-Control: public, max-age=86400, must-revalidate
+/xt4/*
+  Cache-Control: public, max-age=86400, must-revalidate
+/xt6/*
+  Cache-Control: public, max-age=86400, must-revalidate
+
+# Crawler- and agent-facing files (sitemaps, feeds, llms.txt, robots.txt,
+# schema and locations JSON) must reflect edits quickly.
+/*.xml
+  Cache-Control: public, max-age=3600
+/*.txt
+  Cache-Control: public, max-age=3600
+/*.json
+  Cache-Control: public, max-age=3600
+
+# The SPA shell is the routing entry point for every deep link. Never let a
+# stale copy pin visitors to an old asset manifest.
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
