@@ -1,0 +1,31 @@
+{
+  "name": "D-MAX Golf Carts",
+  "url": "https://dmaxgolfcarts.com/",
+  "businessType": "GolfCartDealer",
+  "marketScope": "Nationwide United States product-information audience",
+  "phone": "+1-844-844-1920",
+  "email": "hello@dmaxgolfcarts.com",
+  "address": null,
+  "hours": null,
+  "socialProfiles": [],
+  "services": [
+    "D-MAX golf cart model information",
+    "Model comparison",
+    "Product configuration guidance",
+    "Availability and tailored quote inquiries"
+  ],
+  "models": [
+    { "name": "GT4", "url": "https://dmaxgolfcarts.com/models/gt4" },
+    { "name": "GT6", "url": "https://dmaxgolfcarts.com/models/gt6" },
+    { "name": "XT4", "url": "https://dmaxgolfcarts.com/models/xt4" },
+    { "name": "XT6", "url": "https://dmaxgolfcarts.com/models/xt6" }
+  ],
+  "pages": {
+    "models": "https://dmaxgolfcarts.com/models",
+    "capability": "https://dmaxgolfcarts.com/capability",
+    "engineering": "https://dmaxgolfcarts.com/engineering",
+    "experience": "https://dmaxgolfcarts.com/experience"
+  },
+  "inventory": null,
+  "note": "No live inventory, store locations, hours, or private customer information is exposed by this file."
+}
