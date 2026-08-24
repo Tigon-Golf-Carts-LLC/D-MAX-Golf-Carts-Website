@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "D-MAX Golf Carts"
+description = "A high-tech motorsport showcase website for D-MAX Golf Carts, presenting the GT4, GT6, XT4, and XT6 utility vehicles with model details and drivetrain distinctions."
+version = "1.0.0"
+id = "artifacts/dmax-golf-carts"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 19147
+
+[services.development]
+run = "pnpm --filter @workspace/dmax-golf-carts run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/dmax-golf-carts", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/dmax-golf-carts/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19147"
+BASE_PATH = "/"
