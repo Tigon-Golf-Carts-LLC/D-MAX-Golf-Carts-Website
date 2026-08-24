@@ -1,0 +1,3 @@
+# Accessibility statement
+
+D-MAX Golf Carts aims to provide a keyboard-operable, responsive website with descriptive labels, semantic navigation, readable contrast, and descriptive image alternatives. Contact hello@dmaxgolfcarts.com to report an accessibility barrier.
