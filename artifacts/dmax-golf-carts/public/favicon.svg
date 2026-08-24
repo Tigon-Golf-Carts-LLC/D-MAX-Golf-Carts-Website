@@ -1,3 +1,9 @@
-<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="180" height="180" rx="36" fill="#FF3C00"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="180" height="180">
+  <rect width="180" height="180" rx="34" fill="#fff"/>
+  <g transform="translate(28 43.5) scale(0.2175)">
+    <path fill="#000" fill-rule="evenodd" d="
+    M 0 0 L 327.5 0 A 242.5 242.5 0 0 1 327.5 485 L 0 485 L 78 242.5 Z
+    M 150 126 L 327.5 126 A 116.5 116.5 0 0 1 327.5 359 L 150 359 L 186 242.5 Z
+  "/>
+  </g>
 </svg>

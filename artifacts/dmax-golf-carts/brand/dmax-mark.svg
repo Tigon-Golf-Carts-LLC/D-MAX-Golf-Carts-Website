@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 570 485" width="570" height="485">
+  <!--
+    D-MAX "D" mark, rebuilt as vector.
+
+    NOTE: this is a reconstruction traced from a raster copy of the logo, not
+    the original brand artwork. It is geometrically faithful (the chevron notch
+    sits at ~14% of the width, the counter apex at ~33%), but if the original
+    vector file turns up, replace this file and re-run
+    `python3 scripts/generate-brand-assets.py` to regenerate every icon.
+
+    The wordmark is deliberately NOT reproduced here — recreating the custom
+    lettering by eye would be visibly wrong. Only the symbol is used for icons.
+  -->
+  <path fill="currentColor" fill-rule="evenodd" d="
+    M 0 0 L 327.5 0 A 242.5 242.5 0 0 1 327.5 485 L 0 485 L 78 242.5 Z
+    M 150 126 L 327.5 126 A 116.5 116.5 0 0 1 327.5 359 L 150 359 L 186 242.5 Z
+  "/>
+</svg>

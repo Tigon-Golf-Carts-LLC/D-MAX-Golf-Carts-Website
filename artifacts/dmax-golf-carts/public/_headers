@@ -32,6 +32,28 @@
 /xt6/*
   Cache-Control: public, max-age=86400, must-revalidate
 
+# Brand icons and the social preview card. Listed file by file rather than as
+# `/*.png`, which would also match anything Vite emits into /assets and stack a
+# second Cache-Control onto the immutable rule above.
+/favicon.ico
+  Cache-Control: public, max-age=86400, must-revalidate
+/favicon.svg
+  Cache-Control: public, max-age=86400, must-revalidate
+/favicon-16x16.png
+  Cache-Control: public, max-age=86400, must-revalidate
+/favicon-32x32.png
+  Cache-Control: public, max-age=86400, must-revalidate
+/apple-touch-icon.png
+  Cache-Control: public, max-age=86400, must-revalidate
+/icon-192.png
+  Cache-Control: public, max-age=86400, must-revalidate
+/icon-512.png
+  Cache-Control: public, max-age=86400, must-revalidate
+/icon-512-maskable.png
+  Cache-Control: public, max-age=86400, must-revalidate
+/og-image.jpg
+  Cache-Control: public, max-age=86400, must-revalidate
+
 # Crawler- and agent-facing files (sitemaps, feeds, llms.txt, robots.txt,
 # schema and locations JSON) must reflect edits quickly.
 /*.xml
