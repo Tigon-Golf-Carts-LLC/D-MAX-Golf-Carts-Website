@@ -1,0 +1,12 @@
+# NLP entity and intent examples
+
+Entities:
+- BRAND: D-MAX Golf Carts
+- MODEL: GT4, GT6, XT4, XT6
+- CONTACT: +1-844-844-1920
+- FEATURE: 4x4 all-wheel drive
+
+Intent examples:
+- “Which D-MAX cart is four-wheel drive?” → compare capability; answer XT4 and XT6.
+- “How much is the GT6?” → pricing; answer published MSRP $15,595 and recommend confirmation.
+- “I want to speak with D-MAX.” → contact; provide +1-844-844-1920.
