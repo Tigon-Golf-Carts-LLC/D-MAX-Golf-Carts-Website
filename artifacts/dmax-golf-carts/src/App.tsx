@@ -7,6 +7,8 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
 import { Route, Switch, useLocation, Router as WouterRouter } from 'wouter';
 
+import { useSeoHead } from '@/use-seo-head';
+
 const queryClient = new QueryClient();
 
 type ModelKey = 'GT4' | 'GT6' | 'XT4' | 'XT6';
@@ -853,6 +855,10 @@ function DedicatedPage({ kind }: { kind: PageKind }) {
 }
 
 function Router() {
+  // Prerendered pages ship the right <head>; this keeps it right after the
+  // client router takes over navigation.
+  useSeoHead();
+
   return (
     <RoutedErrorBoundary>
       <Switch>
