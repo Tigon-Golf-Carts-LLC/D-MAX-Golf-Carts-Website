@@ -91,6 +91,30 @@ variables → Actions**:
 
 Use one path or the other, not both, or two systems will race to deploy.
 
+## SEO: prerendered routes
+
+The site is a client-rendered SPA, so every URL used to ship the same `<head>`
+-- including a `<link rel="canonical">` pointing at the homepage, which told
+Google that all 20 pages were duplicates of `/`.
+
+`scripts/prerender-seo.mjs` runs after every Vite build and writes one real
+`index.html` per route, each with its own title, description, canonical, Open
+Graph tags and JSON-LD. It also generates `sitemap.xml` (and
+`sitemap-pages.xml`) plus a real `404.html`. The metadata lives in
+`scripts/seo-routes.mjs`.
+
+**When you add a route to `src/App.tsx`, add it to `scripts/seo-routes.mjs`
+too.** A missing route still works for visitors, but ships the homepage's title
+and canonical, which is what kept pages out of the index.
+
+Because every real route is now a real file, `wrangler.jsonc` sets
+`not_found_handling: "404-page"` -- unknown URLs get a genuine 404 instead of a
+200 carrying the SPA shell (a soft 404). `html_handling` is
+`drop-trailing-slash`, so the canonical slash-less URL is what actually serves.
+
+Brand icons and social cards are generated separately by
+`scripts/generate-brand-assets.py`; see the comments in that file.
+
 ## Local preview
 
 Preview exactly what Cloudflare will serve, including `_headers` rules and the

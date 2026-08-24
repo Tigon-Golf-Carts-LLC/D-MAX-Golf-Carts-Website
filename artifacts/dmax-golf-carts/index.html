@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>D-MAX Golf Carts | GT4, GT6, XT4 & XT6</title>
     <meta name="description" content="Explore D-MAX electric golf carts: GT4, GT6, XT4 and XT6. Compare seating, 4x4 capability, range and pricing, then call 1-844-844-1920." />
     <meta name="author" content="Noah Jaslow, Jaslow Digital Marketing" />
@@ -33,7 +33,11 @@
     <meta name="theme-color" content="#071321" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- One request for the three families the stylesheet actually uses. Inter
+         was loaded here but never referenced by any rule, and these were behind
+         an @import in index.css, which delayed them until the CSS bundle had
+         parsed. -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
   </head>
   <body>
     <div id="root"></div>

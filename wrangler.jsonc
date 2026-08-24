@@ -31,12 +31,18 @@
   "assets": {
     "directory": "./artifacts/dmax-golf-carts/dist/public",
 
-    // Client-side routing: unknown paths (e.g. /models/xt4, /policies/terms)
-    // return index.html so wouter can render the right page. The app's own
-    // NotFound route handles genuinely bad URLs.
-    "not_found_handling": "single-page-application",
+    // Every real route is prerendered to its own index.html by
+    // scripts/prerender-seo.mjs, so unknown URLs are genuinely unknown and get
+    // a real 404 instead of a 200 carrying the SPA shell. Serving the shell for
+    // everything is a soft 404, which Search Console reports as an error and
+    // which wastes crawl budget on URLs that do not exist.
+    "not_found_handling": "404-page",
 
-    // Serve /models/xt4 and /models/xt4/ identically, without a redirect hop.
-    "html_handling": "auto-trailing-slash"
+    // Canonical URLs have no trailing slash (see scripts/seo-routes.mjs), so
+    // serve the slash-less form directly and redirect /models/xt4/ to it.
+    // "auto-trailing-slash" would instead redirect /models/xt4 -> /models/xt4/,
+    // making every canonical URL a redirect -- which Search Console reports as
+    // "Page with redirect" and which costs a round trip on every entry.
+    "html_handling": "drop-trailing-slash"
   }
 }

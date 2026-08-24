@@ -98,9 +98,18 @@ def build_icons() -> None:
     write(tile(512, 0.22, WHITE), "icon-512-maskable.png")
 
 
-def build_og() -> None:
+MODELS = {
+    "gt4": ("GT4", "4 seats  \u00b7  45 mi  \u00b7  25 mph", "GRAND TOURER"),
+    "gt6": ("GT6", "6 seats  \u00b7  45 mi  \u00b7  25 mph", "GRAND TOURER"),
+    "xt4": ("XT4", "4 seats  \u00b7  48 mi  \u00b7  4x4 AWD", "XTREME TERRAIN"),
+    "xt6": ("XT6", "6 seats  \u00b7  48 mi  \u00b7  4x4 AWD", "XTREME TERRAIN"),
+}
+
+
+def build_og(photo_name="xt4", out="og-image.jpg", headline="D-MAX",
+             line2="GOLF CARTS", line3="GT4  \u00b7  GT6  \u00b7  XT4  \u00b7  XT6",
+             line4="1-844-844-1920") -> None:
     """1200x630 social card: the whole cart on the right, brand block on the left."""
-    print("social:")
     W, H = 1200, 630
     PANEL = (5, 8, 14)
 
@@ -109,7 +118,7 @@ def build_og() -> None:
     # The source photo is square and contains the entire vehicle. Cropping it to
     # a 1.9:1 band would cut the roof and wheels off, so instead scale the whole
     # square to the card height and seat it on the right.
-    photo = Image.open(PUBLIC / "models" / "xt4.jpg").convert("RGB")
+    photo = Image.open(PUBLIC / "models" / f"{photo_name}.jpg").convert("RGB")
     photo = photo.resize((H, H), Image.LANCZOS).convert("RGBA")
 
     # Feather the photo's left edge so it dissolves into the panel instead of
@@ -129,18 +138,23 @@ def build_og() -> None:
     sub = ImageFont.truetype(str(FONT_BOLD), 32)
     models = ImageFont.truetype(str(FONT_BOLD), 26)
 
-    draw.text((70, 250), "D-MAX", font=wordmark, fill=WHITE)
-    draw.text((76, 378), "GOLF CARTS", font=sub, fill=(236, 240, 248))
-    draw.text((76, 438), "GT4  \u00b7  GT6  \u00b7  XT4  \u00b7  XT6", font=models,
-              fill=(126, 186, 255))
-    draw.text((76, 492), "1-844-844-1920", font=models, fill=(196, 204, 218))
+    draw.text((70, 250), headline, font=wordmark, fill=WHITE)
+    draw.text((76, 378), line2, font=sub, fill=(236, 240, 248))
+    draw.text((76, 438), line3, font=models, fill=(126, 186, 255))
+    draw.text((76, 492), line4, font=models, fill=(196, 204, 218))
 
-    write(card.convert("RGB"), "og-image.jpg", quality=88, optimize=True)
+    write(card.convert("RGB"), out, quality=88, optimize=True)
 
 
 if __name__ == "__main__":
     if not MARK.exists():
         raise SystemExit(f"missing source mark: {MARK}")
     build_icons()
+    print("social:")
     build_og()
+    # Per-model cards: a share of /models/xt4 should preview the XT4, not the
+    # generic brand card.
+    for slug, (name, specs, tier) in MODELS.items():
+        build_og(photo_name=slug, out=f"og-{slug}.jpg", headline=f"D-MAX {name}",
+                 line2=tier, line3=specs, line4="1-844-844-1920")
     print("done")

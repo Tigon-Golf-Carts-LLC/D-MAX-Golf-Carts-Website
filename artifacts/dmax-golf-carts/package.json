@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite --config vite.config.ts --host 0.0.0.0",
-    "build": "vite build --config vite.config.ts",
-    "build:static": "BASE_PATH=${BASE_PATH:-/} NODE_ENV=production vite build --config vite.config.ts",
+    "build": "vite build --config vite.config.ts && node scripts/prerender-seo.mjs",
+    "build:static": "BASE_PATH=${BASE_PATH:-/} NODE_ENV=production vite build --config vite.config.ts && node scripts/prerender-seo.mjs",
     "build:github": "pnpm run build:static && node scripts/create-github-pages-fallback.mjs",
     "build:cloudflare": "BASE_PATH=/ pnpm run build:static",
     "preview:cloudflare": "pnpm run build:cloudflare && wrangler dev --config ../../wrangler.jsonc",
