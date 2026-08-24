@@ -1,0 +1,3 @@
+# Compliance and standards notes
+
+D-MAX Golf Carts should keep product claims, pricing, range, and availability current and clearly marked as estimated where applicable. The site should continue following WCAG accessibility practices and applicable privacy, communications, and consumer-protection requirements. No legal, location, or regulatory claim is made by this file.
