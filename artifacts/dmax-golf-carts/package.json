@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --config vite.config.ts --host 0.0.0.0",
     "build": "vite build --config vite.config.ts",
-    "build:static": "BASE_PATH=/ NODE_ENV=production vite build --config vite.config.ts",
+    "build:static": "BASE_PATH=${BASE_PATH:-/} NODE_ENV=production vite build --config vite.config.ts",
     "build:github": "pnpm run build:static && node scripts/create-github-pages-fallback.mjs",
     "deploy:cloudflare": "pnpm run build:static && npx wrangler deploy",
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
