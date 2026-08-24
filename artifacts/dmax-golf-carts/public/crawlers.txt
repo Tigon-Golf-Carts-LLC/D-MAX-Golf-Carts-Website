@@ -1,0 +1,9 @@
+# Public crawler directory
+#
+# Search, social, accessibility, archive, and AI crawlers may access public
+# pages under the rules in robots.txt. Do not use this file as an override for
+# provider policy or private data access.
+Googlebot, Bingbot, Slurp, DuckDuckBot, YandexBot, Baiduspider
+GPTBot, ChatGPT-User, ClaudeBot, anthropic-ai, Google-Extended, CCBot
+facebookexternalhit, Twitterbot, LinkedInBot, Pinterest
+ia_archiver, Googlebot-Image, Googlebot-Video
