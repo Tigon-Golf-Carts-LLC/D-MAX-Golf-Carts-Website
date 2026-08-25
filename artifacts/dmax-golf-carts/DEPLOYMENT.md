@@ -91,6 +91,10 @@ variables → Actions**:
 
 Use one path or the other, not both, or two systems will race to deploy.
 
+**Without those two secrets the workflow cannot deploy anything.** It will
+build successfully and then fail on the final step; the workflow now checks for
+them up front and says so rather than failing cryptically inside Wrangler.
+
 ## SEO: prerendered routes
 
 The site is a client-rendered SPA, so every URL used to ship the same `<head>`

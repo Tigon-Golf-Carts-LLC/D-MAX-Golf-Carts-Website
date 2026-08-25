@@ -17,6 +17,25 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      # Fail in seconds with a message that names the problem, rather than
+      # installing and building for half a minute and then dying inside
+      # wrangler with "it's necessary to set a CLOUDFLARE_API_TOKEN
+      # environment variable" -- which is what every run did before the secrets
+      # were configured.
+      - name: Verify Cloudflare credentials are configured
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          missing=""
+          [ -n "$CF_TOKEN" ] || missing="$missing CLOUDFLARE_API_TOKEN"
+          [ -n "$CF_ACCOUNT" ] || missing="$missing CLOUDFLARE_ACCOUNT_ID"
+          if [ -n "$missing" ]; then
+            echo "::error::Missing repository secret(s):$missing. Add them under Settings -> Secrets and variables -> Actions. CLOUDFLARE_API_TOKEN needs the 'Edit Cloudflare Workers' template; CLOUDFLARE_ACCOUNT_ID is in the Cloudflare dashboard sidebar. Nothing can deploy until both exist."
+            exit 1
+          fi
+          echo "Both Cloudflare secrets are present."
+
       - uses: actions/checkout@v4
 
       - uses: pnpm/action-setup@v4
